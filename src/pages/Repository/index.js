@@ -5,7 +5,14 @@ import api from '../../services/api';
 
 import Container from '../../components/Container';
 
-import { Loading, Owner, IssueList, FilterIssues } from './styles';
+import {
+  Loading,
+  Owner,
+  IssueList,
+  FilterIssues,
+  PageController,
+  PageCounter,
+} from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -53,7 +60,7 @@ export default class Repository extends Component {
 
   FilteredIssues = async () => {
     const { match } = this.props;
-    const { filters, filterIndex } = this.state;
+    const { filters, filterIndex, page } = this.state;
 
     const repoName = decodeURIComponent(match.params.repository);
 
@@ -61,6 +68,7 @@ export default class Repository extends Component {
       params: {
         state: filters[filterIndex].state,
         per_page: 5,
+        page,
       },
     });
 
@@ -69,6 +77,15 @@ export default class Repository extends Component {
 
   handleFilterClick = async filterIndex => {
     await this.setState({ filterIndex });
+    this.FilteredIssues();
+  };
+
+  handlePageChange = async action => {
+    const { page } = this.state;
+
+    await this.setState({
+      page: action === 'back' ? page - 1 : page + 1,
+    });
     this.FilteredIssues();
   };
 
@@ -122,6 +139,21 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
+        <PageController>
+          <button
+            disabled={page < 2}
+            type="button"
+            onClick={() => this.handlePageChange('back')}
+          >
+            Anterior
+          </button>
+          <button type="button" onClick={() => this.handlePageChange('next')}>
+            Proximo
+          </button>
+        </PageController>
+        <PageCounter>
+          Pagina atual: <span>{page}</span>
+        </PageCounter>
       </Container>
     );
   }

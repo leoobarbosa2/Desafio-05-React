@@ -129,10 +129,35 @@ export const FilterIssues = styled.div`
     color: #fff;
     padding: 10px;
     border: 1px solid #eee;
-    border-radius: 20px;
+    border-radius: 10px;
 
     &:hover {
       opacity: 70%;
     }
   }
+`;
+
+export const PageController = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+
+  button {
+    background: #7159c1;
+    color: #fff;
+    padding: 6px;
+    border: 1px solid #eee;
+    border-radius: 4x;
+
+    &:disabled {
+      opacity: 15%;
+      cursor: not-allowed;
+    }
+  }
+`;
+
+export const PageCounter = styled.div`
+  text-align: center;
+  color: #7159c1;
 `;
