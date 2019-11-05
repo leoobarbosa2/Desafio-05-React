@@ -118,3 +118,21 @@ export const IssueFilter = styled.div`
     }
   }
 `;
+
+export const FilterIssues = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+
+  button {
+    background: #7159c1;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+
+    &:hover {
+      opacity: 70%;
+    }
+  }
+`;
