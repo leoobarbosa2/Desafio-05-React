@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
@@ -28,9 +29,9 @@ export default class Repository extends Component {
     issues: [],
     loading: true,
     filters: [
-      { state: 'all', label: 'Todas', active: true },
-      { state: 'open', label: 'Abertas', active: false },
-      { state: 'closed', label: 'Fechadas', active: false },
+      { state: 'all', label: 'Todas' },
+      { state: 'open', label: 'Abertas' },
+      { state: 'closed', label: 'Fechadas' },
     ],
     filterIndex: 0,
     page: 1,
@@ -100,7 +101,12 @@ export default class Repository extends Component {
     } = this.state;
 
     if (loading) {
-      return <Loading>Carregando</Loading>;
+      return (
+        <Loading loading={Number(loading)}>
+          <p>Carregando</p>
+          <FaSpinner color="#7159c1" size={70} />
+        </Loading>
+      );
     }
 
     return (
