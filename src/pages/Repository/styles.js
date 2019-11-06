@@ -129,10 +129,10 @@ export const FilterIssues = styled.div`
     color: #fff;
     padding: 10px;
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: 4px;
 
     &:hover {
-      opacity: 70%;
+      opacity: 60%;
     }
   }
 `;

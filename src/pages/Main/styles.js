@@ -87,7 +87,11 @@ export const List = styled.ul`
     }
 
     a {
-      color: #7159c1;
+      background: #7159c1;
+      padding: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      color: #fff;
       text-decoration: none;
     }
   }
